@@ -2,7 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1818;
+  --orange: rgb(255, 129, 0);
+  --hover_orange: #ff80006a;
 }
 
 @theme inline {
@@ -14,8 +16,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0c0c0c;
     --foreground: #ededed;
+    --orange: #ff8100;
   }
 }
 
