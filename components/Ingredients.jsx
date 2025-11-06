@@ -28,7 +28,7 @@ const ingredients = [
 
 export default function Ingredients() {
     return (
-        <section id="ingredients" className="py-20 bg-[#0D0D0D]">
+        <section id="ingredients" className="py-20 bg-[#0D0D0D] pl-[8%]">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl text-[#FF8A00] mb-8">PREMIUM INGREDIENTS</h2>
                 <p className="max-w-4xl mb-12">

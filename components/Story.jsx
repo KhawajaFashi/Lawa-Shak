@@ -1,6 +1,6 @@
 export default function Story() {
     return (
-        <section id="about" className="py-20 bg-black relative">
+        <section id="about" className="py-20 bg-black relative pl-[8%]">
             <div className="container mx-auto px-0 md:px-8 flex flex-col md:flex-row gap-0 md:gap-0">
                 {/* Left column: text */}
                 <div className="w-full md:w-1/2 px-8 md:px-0">

@@ -6,7 +6,7 @@ export default function Contact() {
     const [subject, setSubject] = useState('')
 
     return (
-        <section id="contact" className="py-20 bg-black">
+        <section id="contact" className="py-20 bg-black pl-[8%]">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl mb-6 text-white">CONTACT US</h2>
                 <p className="mb-12 max-w-2xl text-gray-100">
