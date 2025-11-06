@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Hero() {
     return (
-        <section className="min-h-screen relative flex items-center bg-black overflow-hidden pt-20">
+        <section className="min-h-screen relative flex items-center bg-black overflow-hidden pt-20 pl-[8%]">
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/cake.png"
