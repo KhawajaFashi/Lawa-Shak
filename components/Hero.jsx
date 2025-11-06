@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Hero() {
+export default function Hero({ onOrderClick }) {
     return (
         <section className="min-h-screen relative flex items-center bg-black overflow-hidden pt-20 pl-[8%]">
             <div className="absolute inset-0 z-0">
@@ -30,12 +30,12 @@ export default function Hero() {
                         an exquisite blend of textures and flavors,
                         creating an unforgettable dessert experience.
                     </p>
-                    <a
-                        href="#order"
-                        className="bg-orange-500 text-white px-8 py-3 rounded text-sm uppercase tracking-wider font-medium hover:bg-orange-600 transition-colors inline-block"
+                    <button
+                        onClick={onOrderClick}
+                        className="bg-orange-500 text-white px-8 py-3 rounded text-sm uppercase tracking-wider font-medium hover:bg-orange-600 transition-colors inline-block shadow-lg"
                     >
                         ORDER NOW
-                    </a>
+                    </button>
                     <p className="mt-8 text-sm text-gray-400 tracking-wider">PRESENTED BY <span className="text-orange-500">HOT SLICE</span></p>
                 </div>
             </div>
