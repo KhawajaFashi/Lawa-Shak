@@ -1,4 +1,5 @@
 import './globals.css'
+import { OrderProvider } from '@/context/OrderContext'
 
 export const metadata = {
   title: 'Lawa Shak - Delicious Molten Lava Cakes',
@@ -9,7 +10,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <OrderProvider>
+          {children}
+        </OrderProvider>
       </body>
     </html>
   )

@@ -1,8 +1,12 @@
+"use client";
+import { useRouter } from 'next/navigation'
 import Image from "next/image";
 
-export default function HeroB({ onOrderClick }) {
+export default function Hero() {
+    const router = useRouter();
+    const onOrderClick = () => router.push('/order');
     return (
-        <section className="relative min-h-screen flex items-center px-[10%] lg:pl-[12%] xl:pl-[9%] py-20 max-md:flex-col">
+        <section id="home" className="relative min-h-screen flex items-center px-[10%] lg:pl-[12%] xl:pl-[9%] py-20 max-md:flex-col">
             <div className="flex-1 relative md:hidden mx-auto">
                 <div className="relative w-[90%] max-w-[550px] mx-auto mb-20">
                     <Image
