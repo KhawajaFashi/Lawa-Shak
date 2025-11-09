@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 export default function Navigation() {
     return (
-        <aside className="fixed left-0 top-0 h-full w-20 bg-black border-r border-orange-400 flex flex-col justify-between items-center py-10 z-50 shadow-[4px_0_25px_rgba(0,0,0,0.6)]">
+        <aside className="fixed max-lg:hidden left-0 top-0 h-full w-20 bg-(--nav-background) border-r border-orange-400 flex flex-col justify-between items-center py-10 z-50 shadow-[4px_0_25px_rgba(0,0,0,0.6)]">
 
             {/* Main Navigation Icons */}
             <nav>

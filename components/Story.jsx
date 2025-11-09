@@ -1,6 +1,6 @@
 export default function Story() {
     return (
-        <section id="about" className="py-20 bg-black relative pl-[8%]">
+        <section id="about" className="py-20 relative pl-[8%]">
             <div className="container mx-auto px-0 md:px-8 flex flex-col md:flex-row gap-0 md:gap-0">
                 {/* Left column: text */}
                 <div className="w-full md:w-1/2 px-8 md:px-0">
@@ -15,8 +15,7 @@ export default function Story() {
                     <p className="mb-12 text-gray-100 text-base">
                         Our philosophy centers on the perfect balance of <span className="text-orange-500 font-semibold">tradition and innovation</span>. We honor time-
                         tested recipes while embracing modern techniques and premium ingredients to create
-                        desserts that are both familiar and extraordinarily unique. Every creation tells a story of
-                        craftsmanship, dedication, and love for the art of dessert making.
+                        desserts that are both familiar and extraordinarily unique.
                     </p>
                     <h3 className="text-xl text-orange-500 font-bold mb-4 mt-8 flex items-center gap-2">
                         THE LAWA SHAK STORY
@@ -31,12 +30,6 @@ export default function Story() {
                         from years of experimentation and refinement. The name itself carries profound meaning,
                         reflecting the essence of layered complexity and rich flavors that define this extraordinary
                         creation.
-                    </p>
-                    <p className="mb-6 text-gray-100 text-base">
-                        What began as a vision to create the <span className="text-orange-500 font-semibold">perfect dessert experience</span> has evolved into a carefully
-                        orchestrated symphony of textures, tastes, and visual artistry. Each component is
-                        meticulously selected and prepared, from the finest cocoa to the most delicate pastry layers,
-                        ensuring that every bite delivers an unforgettable moment of culinary bliss.
                     </p>
                     <p className="mb-8 text-gray-100 text-base">
                         Our commitment to <span className="text-orange-500 font-semibold">quality, authenticity, and innovation</span> shines through in every aspect of
