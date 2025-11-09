@@ -1,44 +1,57 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-export default function Hero({ onOrderClick }) {
+export default function HeroB({ onOrderClick }) {
     return (
-        <section className="min-h-screen relative flex items-center bg-black overflow-hidden pt-20 pl-[8%]">
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/cake.png"
-                    alt="Molten chocolate dessert"
-                    fill
-                    className="object-cover opacity-70"
-                    priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+        <section className="relative min-h-screen flex items-center px-[10%] py-20">
+            {/* Left Column Text */}
+            <div className="flex-1 max-w-xl z-10">
+                <h1 className="font-bold leading-[0.9] mb-8">
+                    <span className="block text-white text-6xl md:text-7xl tracking-tight">
+                        LAWA
+                    </span>
+                    <span className="block text-orange-500 text-6xl md:text-7xl tracking-tight drop-shadow-[0_0_20px_rgba(255,128,0,0.4)]">
+                        SHAK
+                    </span>
+                </h1>
+
+                <p className="text-orange-500 text-lg md:text-xl tracking-[0.15em] font-medium mb-6">
+                    MOLTEN CHOCOLATE EXPERIENCE
+                </p>
+
+                <p className="text-gray-300 text-base md:text-md w-[80%] leading-relaxed mb-10">
+                    Experience the perfect balance of rich chocolate flavor and molten
+                    decadence. Crafted with precision to deliver a signature dessert
+                    designed to delight every chocolate lover.
+                </p>
+
+                <button
+                    onClick={onOrderClick}
+                    className="bg-orange-500 text-white px-10 py-4 rounded-md text-sm uppercase tracking-widest font-semibold shadow-[0_5px_25px_rgba(255,129,0,0.5)] hover:shadow-[0_6px_40px_rgba(255,129,0,0.8)] hover:bg-orange-600 transition-all duration-300 transform hover:-translate-y-1"
+                >
+                    ORDER NOW
+                </button>
+
+                <p className="text-xs text-gray-500 tracking-wider absolute bottom-12">
+                    PRESENTED BY <span className="text-orange-500 font-semibold">HOT SLICE</span>
+                </p>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-2xl">
-                    <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-none tracking-tight">
-                        <span className="text-white block">LAWA</span>
-                        <span className="text-orange-500 block">SHAK</span>
-                    </h1>
-                    <p className="text-lg md:text-xl mb-6 text-orange-500 tracking-widest">
-                        MOLTEN CHOCOLATE EXPERIENCE
-                    </p>
-                    <p className="text-base md:text-lg mb-10 text-gray-200 leading-relaxed max-w-xl">
-                        Indulge in pure decadence. Our signature Lawa
-                        Shak features a perfectly crafted chocolate shell
-                        with a flowing molten center. Each bite delivers
-                        an exquisite blend of textures and flavors,
-                        creating an unforgettable dessert experience.
-                    </p>
-                    <button
-                        onClick={onOrderClick}
-                        className="bg-orange-500 text-white px-8 py-3 rounded text-sm uppercase tracking-wider font-medium hover:bg-orange-600 transition-colors inline-block shadow-lg"
-                    >
-                        ORDER NOW
-                    </button>
-                    <p className="mt-8 text-sm text-gray-400 tracking-wider">PRESENTED BY <span className="text-orange-500">HOT SLICE</span></p>
+            {/* Right Column Image */}
+            <div className="flex-1 relative">
+                <div className="relative w-[90%] max-w-[550px] ml-auto">
+                    <Image
+                        src="/cake.png"
+                        alt="Molten chocolate dessert"
+                        width={600}
+                        height={600}
+                        className="rounded-xl object-contain drop-shadow-[0_0_25px_rgba(255,128,0,0.4)]"
+                    />
+
+                    {/* Optional orange glow behind dessert */}
+                    <div className="absolute inset-0 bg-orange-500/10 blur-3xl -z-10"></div>
                 </div>
             </div>
+
         </section>
-    )
+    );
 }
