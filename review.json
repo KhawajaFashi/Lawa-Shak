@@ -1,0 +1,60 @@
+[
+    {
+        "id": 1762792874690,
+        "name": "Khawaja Fashi Ud Din Abdullah ",
+        "rating": "4",
+        "comments": "Hello lorem this is the comment section for the reviews. Here users can leave their feedback and share their experiences regarding the product or service being reviewed. This section is designed to provide valuable insights and help other potential customers make informed decisions.",
+        "images": [
+            "/assets/img-1762792874686-akatsuki-laptop-tov7ndhlh292p3du.jpg"
+        ],
+        "profilePhoto": null,
+        "date": "2025-11-10T16:41:14.690Z"
+    },
+    {
+        "id": 1762792902484,
+        "name": "Khawaja",
+        "rating": "4",
+        "comments": "Hello lorem23 this is the comment section for the reviews. Here users can leave their feedback and share their experiences regarding the product or service being reviewed. This section is designed to provide valuable insights and help other potential customers make informed decisions.",
+        "images": [
+            "/assets/img-1762792902478-anime-boys-manga-japan-shonen-jump-satoru-gojo-hd-wallpaper-preview.jpg"
+        ],
+        "profilePhoto": "/assets/profile-1762792902482-709075.jpg",
+        "date": "2025-11-10T16:41:42.484Z"
+    },
+    {
+        "id": 1762794725119,
+        "name": "Khawaja Fashi Ud Din ",
+        "rating": "3",
+        "comments": "The longest word in any of the major English language dictionaries is , a word that refers to a lung disease contracted from the inhalation of very fine silica particles, specifically from a volcano; medically, it is the same as silicosis.",
+        "images": [
+            "/assets/img-1762794725093-2854cad05935079810d40898f281c148.png",
+            "/assets/img-1762794725097-15328.jpeg",
+            "/assets/img-1762794725099-709075.jpg",
+            "/assets/img-1762794725101-709076.jpg",
+            "/assets/img-1762794725105-709087.jpg",
+            "/assets/img-1762794725107-30358082a6b5e6d5021dcd9c6cef718c.jpg",
+            "/assets/img-1762794725110-akatsuki-laptop-tov7ndhlh292p3du.jpg",
+            "/assets/img-1762794725114-anime-boys-manga-japan-shonen-jump-satoru-gojo-hd-wallpaper-preview.jpg"
+        ],
+        "profilePhoto": "/assets/profile-1762794725117-thumbnail.jpg",
+        "date": "2025-11-10T17:12:05.119Z"
+    },
+    {
+        "id": 1762794725119,
+        "name": "Khawaja Fashi Ud Din ",
+        "rating": "3",
+        "comments": "The longest word in any of the major English language dictionaries is , a word that refers to a lung disease contracted from the inhalation of very fine silica particles, specifically from a volcano; medically, it is the same as silicosis.",
+        "images": [
+            "/assets/img-1762794725093-2854cad05935079810d40898f281c148.png",
+            "/assets/img-1762794725097-15328.jpeg",
+            "/assets/img-1762794725099-709075.jpg",
+            "/assets/img-1762794725101-709076.jpg",
+            "/assets/img-1762794725105-709087.jpg",
+            "/assets/img-1762794725107-30358082a6b5e6d5021dcd9c6cef718c.jpg",
+            "/assets/img-1762794725110-akatsuki-laptop-tov7ndhlh292p3du.jpg",
+            "/assets/img-1762794725114-anime-boys-manga-japan-shonen-jump-satoru-gojo-hd-wallpaper-preview.jpg"
+        ],
+        "profilePhoto": "/assets/profile-1762794725117-thumbnail.jpg",
+        "date": "2025-11-09T17:12:05.119Z"
+    }
+]

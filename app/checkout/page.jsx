@@ -93,12 +93,22 @@ export default function CheckoutPage() {
                             </div>
                         </div>
                     </div>
-
                     <button
-                        onClick={() => {
-                            // Here you would typically integrate with a payment processor
-                            alert('Order placed successfully!')
-                            router.push('/')
+                        onClick={async () => {
+                            // Send PDF to owner and user
+                            {console.log("Order Data:",orderData)}
+                            try {
+                                await fetch('/api/order', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ orderData, userEmail: orderData.email })
+                                })
+                            } catch (e) {
+                                console.log("Error:",e)
+                                // Optionally handle error
+                            }
+                            // alert('Order placed successfully!')
+                            // router.push('/')
                         }}
                         className="w-full bg-orange-500 text-white py-3 rounded text-lg font-medium transition-colors hover:bg-orange-600"
                     >
