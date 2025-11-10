@@ -9,7 +9,6 @@ export default function ReviewForm() {
         name: '',
         rating: '',
         comments: '',
-        images: [],
         profilePhoto: null,
     })
     const [errors, setErrors] = useState({})
@@ -18,9 +17,7 @@ export default function ReviewForm() {
 
     const handleChange = (e) => {
         const { name, value, files } = e.target
-        if (name === 'images') {
-            setForm((prev) => ({ ...prev, images: Array.from(files) }))
-        } else if (name === 'profilePhoto') {
+        if (name === 'profilePhoto') {
             setForm((prev) => ({ ...prev, profilePhoto: files[0] }))
         } else {
             setForm((prev) => ({ ...prev, [name]: value }))
@@ -45,11 +42,6 @@ export default function ReviewForm() {
             formData.append('name', form.name)
             formData.append('rating', form.rating)
             formData.append('comments', form.comments)
-            if (form.images && form.images.length > 0) {
-                for (let img of form.images) {
-                    formData.append('images', img)
-                }
-            }
             if (form.profilePhoto) {
                 formData.append('profilePhoto', form.profilePhoto)
             }
@@ -131,41 +123,21 @@ export default function ReviewForm() {
                 {errors.rating && <p className="text-red-400 text-sm mt-1">{errors.rating}</p>}
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                    <label className="flex items-center gap-2 cursor-pointer bg-white/5 border border-white/10 px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all">UPLOAD IMAGES
+                <label className="flex items-center gap-2 cursor-pointer bg-white/5 border border-white/10 px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all">PROFILE PHOTO
 
-                        <input type="file"
-                            name="images"
-                            accept="image/*"
-                            multiple
-                            onChange={handleChange}
-                            className="hidden"
-                        />
-                    </label>
-                    {form.images.length > 0 && (
-                        <div className="flex gap-2 mt-2 flex-wrap">
-                            {form.images.map((img, idx) => (
-                                <span key={idx} className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded">{img.name}</span>
-                            ))}
-                        </div>
-                    )}
-                </div>
-                <div>
-                    <label className="flex items-center gap-2 cursor-pointer bg-white/5 border border-white/10 px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all">PROFILE PHOTO
-
-                        <input type="file"
-                            name="profilePhoto"
-                            accept="image/*"
-                            onChange={handleChange}
-                            className="hidden"
-                        />
-                    </label>
-                    {form.profilePhoto && (
-                        <div className="mt-2">
-                            <span className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded">{form.profilePhoto.name}</span>
-                        </div>
-                    )}
-                </div>
+                    <input type="file"
+                        name="profilePhoto"
+                        accept="image/*"
+                        onChange={handleChange}
+                        className="hidden"
+                    />
+                </label>
+                {form.profilePhoto && (
+                    <div className="mt-2">
+                        <span className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded">{form.profilePhoto.name}</span>
+                    </div>
+                )}
+                {/* </div> */}
             </div>
             <button
                 type="submit"
