@@ -9,7 +9,6 @@ export default function OrderPage() {
   // We'll pass a prop to ContactForm to handle 'Next' click
   return (
     <>
-      <Navigation />
       <main className="min-h-screen flex flex-col md:flex-row bg-black">
         <div className="w-full md:w-full p-8 flex items-center justify-center">
           <OrderForm />

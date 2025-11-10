@@ -1,3 +1,4 @@
+import Navigation from '@/components/Navigation'
 import './globals.css'
 import { OrderProvider } from '@/context/OrderContext'
 
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="antialiased">
         <OrderProvider>
+          <Navigation />
           {children}
         </OrderProvider>
       </body>

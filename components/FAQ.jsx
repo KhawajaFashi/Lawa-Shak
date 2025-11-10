@@ -40,9 +40,6 @@ export default function FAQ() {
             <div className="absolute left-10 top-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl"></div>
             <div className="absolute right-20 bottom-0 w-64 h-64 bg-orange-500/5 rounded-full blur-2xl"></div>
 
-            {/* Grid overlay */}
-            <div className="absolute inset-0 opacity-[0.05] bg-[url('/grid.svg')] bg-cover pointer-events-none"></div>
-
             <div className="relative z-10 container mx-auto max-w-[90%]">
 
                 <h2

@@ -111,7 +111,7 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="Enter your full name"
                                 required
-                                className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                className="input-field"
                             />
                         </div>
                         <div className="grid md:grid-cols-2 gap-4">
@@ -124,7 +124,7 @@ export default function OrderForm() {
                                     onChange={handleInputChange}
                                     placeholder="your@email.com"
                                     required
-                                    className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                    className="input-field"
                                 />
                             </div>
                             <div>
@@ -134,9 +134,9 @@ export default function OrderForm() {
                                     name="phone"
                                     value={formData.phone}
                                     onChange={handleInputChange}
-                                    placeholder="+1 (555) 000-0000"
+                                    placeholder="+92 1234 123-4567"
                                     required
-                                    className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                    className="input-field"
                                 />
                             </div>
                         </div>
@@ -151,7 +151,7 @@ export default function OrderForm() {
                             onChange={handleInputChange}
                             placeholder="123 Main Street"
                             required
-                            className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                            className="input-field"
                         />
                     </div>
 
@@ -165,7 +165,7 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="City"
                                 required
-                                className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                className="input-field"
                             />
                         </div>
                         <div>
@@ -177,7 +177,7 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="State"
                                 required
-                                className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                className="input-field"
                             />
                         </div>
                     </div>
@@ -192,7 +192,7 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="12345"
                                 required
-                                className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                className="input-field"
                             />
                         </div>
                         <div>
@@ -204,7 +204,7 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="Country"
                                 required
-                                className="w-full bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                className="input-field"
                             />
                         </div>
                     </div>

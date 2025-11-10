@@ -14,7 +14,6 @@ export default function CheckoutPage() {
 
     return (
         <>
-            <Navigation />
             <main className="min-h-screen bg-black py-10 px-[8%]">
                 <div className="container mx-auto max-w-4xl">
                     <h1 className="text-3xl text-orange-500 mb-8">Order Review</h1>

@@ -21,7 +21,7 @@ export default function Contact() {
             <div className="absolute right-20 bottom-0 w-64 h-64 bg-orange-500/5 rounded-full blur-2xl"></div>
 
             {/* Grid Overlay */}
-            <div className="absolute inset-0 opacity-[0.05] bg-[url('/grid.svg')] bg-cover pointer-events-none"></div>
+            {/* <div className="absolute inset-0 opacity-[0.05] bg-[url('/grid.svg')] bg-cover pointer-events-none"></div> */}
 
             <div className="relative z-10 container mx-auto">
 
