@@ -28,7 +28,7 @@ export default function Reviews() {
         if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
     return (
-        <section className="py-24 px-[8%] bg-[#0A0A0A]">
+        <section className="py-24 px-[8%] bg-[#0A0A0A]" id="reviews">
             <h2 className="text-4xl font-bold text-orange-500 mb-10">
                 CUSTOMER REVIEWS
             </h2>

@@ -1,4 +1,4 @@
-import { MdHome } from "react-icons/md";
+import { MdHome, MdReviews } from "react-icons/md";
 import { IoPeople } from "react-icons/io5";
 import { PiChefHatBold } from "react-icons/pi";
 import { SiMinutemailer } from "react-icons/si";
@@ -33,6 +33,11 @@ export default function Navigation() {
                             <PiChefHatBold size={22} />
                         </button>
                     </Link>
+                    <Link href="/#reviews">
+                        <button aria-label="Reviews" className="nav-icon">
+                            <MdReviews size={22} />
+                        </button>
+                    </Link>
 
                     <Link href="/#contact">
                         <button aria-label="Contact" className="nav-icon">
@@ -40,7 +45,7 @@ export default function Navigation() {
                         </button>
                     </Link>
                     <Link href="/#faq">
-                        <button aria-label="Contact" className="nav-icon">
+                        <button aria-label="FAQ" className="nav-icon">
                             <FaQuestion size={20} />
                         </button>
                     </Link>
