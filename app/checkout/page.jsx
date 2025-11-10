@@ -107,8 +107,8 @@ export default function CheckoutPage() {
                                 console.log("Error:",e)
                                 // Optionally handle error
                             }
-                            // alert('Order placed successfully!')
-                            // router.push('/')
+                            alert('Order placed successfully!')
+                            router.push('/')
                         }}
                         className="w-full bg-orange-500 text-white py-3 rounded text-lg font-medium transition-colors hover:bg-orange-600"
                     >
