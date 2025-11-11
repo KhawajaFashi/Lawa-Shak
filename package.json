@@ -12,6 +12,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "formidable": "^3.5.4",
+    "image-type": "^6.0.0",
     "lucide-react": "^0.553.0",
     "next": "16.0.1",
     "nodemailer": "^7.0.10",

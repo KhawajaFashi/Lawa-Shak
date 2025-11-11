@@ -19,6 +19,8 @@ export default function OrderForm() {
         postalCode: '',
         country: ''
     })
+    const [transactionProof, setTransactionProof] = useState(null)
+    const [transactionProofFile, setTransactionProofFile] = useState(null)
     const basePrice = 24.99
     const deliveryFee = 5.00
     const taxRate = 0.08
@@ -30,6 +32,27 @@ export default function OrderForm() {
             [name]: value
         }))
     }
+
+    const handleProofUpload = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('transactionProof', file);
+        console.log("Upload response:", file);
+        setTransactionProofFile(file);
+        
+        const res = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+        if (data.path) {
+            setTransactionProof(data.path); // store the path, not the file itself
+        }
+    };
+
 
     const subtotal = basePrice * quantity
     const tax = subtotal * taxRate
@@ -208,6 +231,26 @@ export default function OrderForm() {
                             />
                         </div>
                     </div>
+
+                    <div>
+                        <label className="block mb-2 text-white">TRANSACTION PROOF</label>
+                        <label className="flex items-center gap-2 cursor-pointer bg-white/5 border border-white/10 px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all">
+                            UPLOAD PROOF IMAGE
+                            <input
+                                type="file"
+                                name="transactionProof"
+                                accept="image/*"
+                                onChange={handleProofUpload}
+                                className="hidden"
+                            />
+                        </label>
+                        {transactionProof && (
+                            <div className="mt-2">
+                                <span className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded">{transactionProof.split('/')[2]}</span>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="border-t border-gray-800 pt-4 mt-8">
                         <div className="flex justify-between mb-2 text-gray-100">
                             <span>Subtotal ({quantity} item):</span>
@@ -231,6 +274,7 @@ export default function OrderForm() {
                         type="submit"
                         onClick={(e) => {
                             e.preventDefault()
+
                             const orderData = {
                                 ...formData,
                                 quantity,
@@ -238,10 +282,16 @@ export default function OrderForm() {
                                 subtotal,
                                 deliveryFee,
                                 tax,
-                                total
+                                total,
+                                transactionProof,
+                                transactionProofFile
                             }
+
+                            // Store the file in sessionStorage if it exists
+
                             setOrderData(orderData)
                             router.push('/checkout')
+
                         }}
                         className="w-full bg-orange-500 text-white py-3 rounded text-lg font-medium transition-colors hover:bg-orange-600"
                     >

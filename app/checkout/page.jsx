@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import Navigation from '@/components/Navigation'
 import { useOrder } from '@/context/OrderContext'
+import Image from 'next/image'
 
 export default function CheckoutPage() {
     const router = useRouter()
@@ -73,6 +74,18 @@ export default function CheckoutPage() {
                                 <p className="text-gray-400">Delivery Option</p>
                                 <p className="text-white">{orderData.deliveryOption === 'standard' ? 'Standard (3-5 days)' : 'Express (1-2 days)'}</p>
                             </div>
+                            {orderData.transactionProof && (
+                                <div className="pt-4 border-t border-gray-800">
+                                    <p className="text-gray-400">Transaction Proof</p>
+                                    <Image 
+                                        src={orderData.transactionProof} 
+                                        alt="Transaction Proof"
+                                        className="mt-2 max-w-2xl rounded"
+                                        width={1900}
+                                        height={1900}
+                                    />
+                                </div>
+                            )}
                             <div className="border-t border-gray-800 my-4 pt-4">
                                 <div className="flex justify-between mb-2">
                                     <p className="text-gray-400">Subtotal</p>
@@ -96,19 +109,27 @@ export default function CheckoutPage() {
                     <button
                         onClick={async () => {
                             // Send PDF to owner and user
-                            {console.log("Order Data:",orderData)}
                             try {
+                                const formData = new FormData()
+                                formData.append('orderData', JSON.stringify(orderData))
+                                formData.append('userEmail', orderData.email)
+
+                                // Check if transactionProof exists in session storage (we'll need to store it there from OrderForm)
+                                const proofFile = sessionStorage.getItem('transactionProofFile')
+                                if (proofFile) {
+                                    const blob = new Blob([proofFile], { type: 'application/octet-stream' })
+                                    formData.append('transactionProof', blob, orderData.transactionProof)
+                                }
+
                                 await fetch('/api/order', {
                                     method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({ orderData, userEmail: orderData.email })
+                                    body: formData
                                 })
                             } catch (e) {
-                                console.log("Error:",e)
-                                // Optionally handle error
+                                console.log("Error:", e)
                             }
                             alert('Order placed successfully!')
-                            router.push('/')
+                            // router.push('/')
                         }}
                         className="w-full bg-orange-500 text-white py-3 rounded text-lg font-medium transition-colors hover:bg-orange-600"
                     >
