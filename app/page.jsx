@@ -5,6 +5,7 @@ import Ingredients from '@/components/Ingredients'
 import Contact from '@/components/Contact'
 import FAQ from '@/components/FAQ';
 import Reviews from '@/components/Reviews'
+import ImageSlider from '@/components/ImageSlider'
 
 export default function Home() {
   
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <Hero />
         <Story />
+        <ImageSlider/>
         <Ingredients />
         <Reviews/>
         <Contact />
