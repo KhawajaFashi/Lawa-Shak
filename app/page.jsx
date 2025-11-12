@@ -6,6 +6,7 @@ import Contact from '@/components/Contact'
 import FAQ from '@/components/FAQ';
 import Reviews from '@/components/Reviews'
 import ImageSlider from '@/components/ImageSlider'
+import Whatsapp from '@/components/Whatsapp'
 
 export default function Home() {
   
@@ -19,7 +20,8 @@ export default function Home() {
         <Ingredients />
         <Reviews/>
         <Contact />
-        <FAQ/>
+        <FAQ />
+        <Whatsapp/>
       </main>
     </>
   )
