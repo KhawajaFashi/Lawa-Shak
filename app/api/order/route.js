@@ -46,16 +46,18 @@ export async function POST(req) {
         y -= 40
 
         for (const [key, value] of Object.entries(orderData)) {
-            if (key === 'transactionProof') continue
+            if (key === 'transactionProof' || key === 'transactionProofFile') continue
+            else {
+                const label = labelize(key)
+                console.log('Adding to PDF:', key, value, label)
+                page.drawText(label, { x: 50, y, size: 14, font: bold, color: rgb(0, 0, 0) })
+                page.drawText(formatValue(value), { x: 220, y, size: 14, font, color: rgb(0.1, 0.1, 0.1) })
+                y -= 26
 
-            const label = labelize(key)
-            page.drawText(label, { x: 50, y, size: 14, font: bold, color: rgb(0, 0, 0) })
-            page.drawText(formatValue(value), { x: 220, y, size: 14, font, color: rgb(0.1, 0.1, 0.1) })
-            y -= 26
-
-            if (['Address', 'City', 'Subtotal'].includes(label)) {
-                page.drawLine({ start: { x: 50, y }, end: { x: 550, y }, thickness: 0.5, color: rgb(0.9, 0.9, 0.9) })
-                y -= 20
+                if (['Address', 'City', 'Subtotal'].includes(label)) {
+                    page.drawLine({ start: { x: 50, y }, end: { x: 550, y }, thickness: 0.5, color: rgb(0.9, 0.9, 0.9) })
+                    y -= 20
+                }
             }
         }
 
@@ -68,13 +70,13 @@ export async function POST(req) {
                 const imageBuffer = await fs.readFile(imagePath)
                 const type = await imageType(imageBuffer)
                 if (!type) throw new Error('Uploaded file is not a valid image')
-                console.log('Detected type:', type)
-                console.log("Image Buffer:", imageBuffer);
-                console.log("Image orderData.transactionProof:", orderData.transactionProof);
+                // ('Detected type:', type)
+                // consoconsole.logle.log("Image Buffer:", imageBuffer);
+                // console.log("Image orderData.transactionProof:", orderData.transactionProof);
                 let image
                 if (type.ext === 'png') image = await pdf.embedPng(imageBuffer)
                 else if (type.ext === 'jpg' || type.ext === 'jpeg') image = await pdf.embedJpg(imageBuffer)
-                console.log("Image:", image);
+                // console.log("Image:", image);
                 if (image) {
                     // Add new page if image doesn't fit
                     const imageHeight = 250

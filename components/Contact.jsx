@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 
 const socials = [
-    { icon: FaInstagram, href: "#" },
-    { icon: FaFacebook, href: "#" },
-    { icon: FaTiktok, href: "#" },
+    { icon: FaTiktok, href: "https://www.tiktok.com/@hot.slice.dina?_r=1&_t=ZS-91LV2f74eoa" },
 ];
 
 export default function Contact() {
@@ -128,8 +126,8 @@ export default function Contact() {
 
                             <div className="flex items-center gap-4">
                                 <Phone className="text-orange-500 w-5 h-5" />
-                                <a href="tel:+15551234567" className="text-gray-300 hover:text-orange-500">
-                                    +1 (555) 123-4567
+                                <a href="tel:+923145433000" className="text-gray-300 hover:text-orange-500">
+                                    +92 314 5433000
                                 </a>
                             </div>
 

@@ -16,12 +16,12 @@ export default function OrderForm() {
         address: '',
         city: '',
         state: '',
-        postalCode: '',
-        country: ''
+        postalCode: ''
     })
     const [transactionProof, setTransactionProof] = useState(null)
     const [transactionProofFile, setTransactionProofFile] = useState(null)
-    const basePrice = 24.99
+    const [errors, setErrors] = useState({})
+    const basePrice = 420.99
     const deliveryFee = 5.00
     const taxRate = 0.08
 
@@ -31,6 +31,7 @@ export default function OrderForm() {
             ...prev,
             [name]: value
         }))
+        setErrors(prev => ({ ...prev, [name]: undefined }))
     }
 
     const handleProofUpload = async (e) => {
@@ -41,7 +42,7 @@ export default function OrderForm() {
         formData.append('transactionProof', file);
         console.log("Upload response:", file);
         setTransactionProofFile(file);
-        
+
         const res = await fetch('/api/upload', {
             method: 'POST',
             body: formData
@@ -50,6 +51,7 @@ export default function OrderForm() {
         const data = await res.json();
         if (data.path) {
             setTransactionProof(data.path); // store the path, not the file itself
+            setErrors(prev => ({ ...prev, transactionProof: undefined }))
         }
     };
 
@@ -58,12 +60,31 @@ export default function OrderForm() {
     const tax = subtotal * taxRate
     const total = subtotal + deliveryFee + tax
 
+    const validateForm = () => {
+        const newErrors = {}
+
+        if (!formData.fullName || !formData.fullName.trim()) newErrors.fullName = 'Full name is required'
+        if (!formData.email || !formData.email.trim()) newErrors.email = 'Email is required'
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Enter a valid email'
+        if (!formData.phone || !formData.phone.trim()) newErrors.phone = 'Phone number is required'
+        if (!formData.address || !formData.address.trim()) newErrors.address = 'Street address is required'
+        if (!formData.city || !formData.city.trim()) newErrors.city = 'City is required'
+        if (!formData.state || !formData.state.trim()) newErrors.state = 'State/Province is required'
+        if (!formData.postalCode || !formData.postalCode.trim()) newErrors.postalCode = 'Postal code is required'
+        if (!transactionProof) newErrors.transactionProof = 'Transaction proof image is required'
+
+        setErrors(newErrors)
+        return Object.keys(newErrors).length === 0
+    }
+
+
+
     return (
         <section id="order" className="py-5 bg-black px-[8%]">
             <div className="container mx-auto px-4 max-w-4xl">
                 <div className="mb-8">
                     <p className="text-gray-400">STARTING PRICE</p>
-                    <h2 className="text-4xl text-orange-500">${basePrice.toFixed(2)}</h2>
+                    <h2 className="text-4xl text-orange-500">Rs.{basePrice.toFixed(2)}</h2>
                 </div>
 
                 <form className="space-y-6">
@@ -94,36 +115,6 @@ export default function OrderForm() {
                         </div>
                     </div>
 
-                    <div>
-                        <label className="block mb-2 text-white">DELIVERY OPTION</label>
-                        <div className="flex gap-4">
-                            <label className="flex items-center gap-2 cursor-pointer text-gray-100">
-                                <input
-                                    type="radio"
-                                    name="delivery"
-                                    value="standard"
-                                    checked={deliveryOption === 'standard'}
-                                    onChange={(e) => setDeliveryOption(e.target.value)}
-                                    className="hidden"
-                                />
-                                <span className={`w-4 h-4 rounded-full border ${deliveryOption === 'standard' ? 'bg-orange-500 border-orange-500' : 'border-gray-400'}`} />
-                                <span>Standard (3-5 days)</span>
-                            </label>
-                            <label className="flex items-center gap-2 cursor-pointer text-gray-100">
-                                <input
-                                    type="radio"
-                                    name="delivery"
-                                    value="express"
-                                    checked={deliveryOption === 'express'}
-                                    onChange={(e) => setDeliveryOption(e.target.value)}
-                                    className="hidden"
-                                />
-                                <span className={`w-4 h-4 rounded-full border ${deliveryOption === 'express' ? 'bg-orange-500 border-orange-500' : 'border-gray-400'}`} />
-                                <span>Express (1-2 days)</span>
-                            </label>
-                        </div>
-                    </div>
-
                     <div className="grid md:grid-cols-2 gap-4">
                         <div>
                             <label className="block mb-2 text-white">FULL NAME</label>
@@ -134,8 +125,9 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="Enter your full name"
                                 required
-                                className="input-field"
+                                className={`input-field ${errors.fullName ? 'border-red-500 bg-red-500/10' : ''}`}
                             />
+                            {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
                         </div>
                         <div className="grid md:grid-cols-2 gap-4">
                             <div>
@@ -147,8 +139,9 @@ export default function OrderForm() {
                                     onChange={handleInputChange}
                                     placeholder="your@email.com"
                                     required
-                                    className="input-field"
+                                    className={`input-field ${errors.email ? 'border-red-500 bg-red-500/10' : ''}`}
                                 />
+                                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                             </div>
                             <div>
                                 <label className="block mb-2 text-white">PHONE NUMBER</label>
@@ -159,8 +152,9 @@ export default function OrderForm() {
                                     onChange={handleInputChange}
                                     placeholder="+92 1234 123-4567"
                                     required
-                                    className="input-field"
+                                    className={`input-field ${errors.phone ? 'border-red-500 bg-red-500/10' : ''}`}
                                 />
+                                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                             </div>
                         </div>
                     </div>
@@ -174,8 +168,9 @@ export default function OrderForm() {
                             onChange={handleInputChange}
                             placeholder="123 Main Street"
                             required
-                            className="input-field"
+                            className={`input-field ${errors.address ? 'border-red-500 bg-red-500/10' : ''}`}
                         />
+                        {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
@@ -188,8 +183,9 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="City"
                                 required
-                                className="input-field"
+                                className={`input-field ${errors.city ? 'border-red-500 bg-red-500/10' : ''}`}
                             />
+                            {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
                         </div>
                         <div>
                             <label className="block mb-2 text-white">STATE/PROVINCE</label>
@@ -200,8 +196,9 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="State"
                                 required
-                                className="input-field"
+                                className={`input-field ${errors.state ? 'border-red-500 bg-red-500/10' : ''}`}
                             />
+                            {errors.state && <p className="text-red-500 text-sm mt-1">{errors.state}</p>}
                         </div>
                     </div>
 
@@ -215,58 +212,48 @@ export default function OrderForm() {
                                 onChange={handleInputChange}
                                 placeholder="12345"
                                 required
-                                className="input-field"
+                                className={`input-field ${errors.postalCode ? 'border-red-500 bg-red-500/10' : ''}`}
                             />
+                            {errors.postalCode && <p className="text-red-500 text-sm mt-1">{errors.postalCode}</p>}
                         </div>
-                        <div>
-                            <label className="block mb-2 text-white">COUNTRY</label>
-                            <input
-                                type="text"
-                                name="country"
-                                value={formData.country}
-                                onChange={handleInputChange}
-                                placeholder="Country"
-                                required
-                                className="input-field"
-                            />
-                        </div>
-                    </div>
 
-                    <div>
-                        <label className="block mb-2 text-white">TRANSACTION PROOF</label>
-                        <label className="flex items-center gap-2 cursor-pointer bg-white/5 border border-white/10 px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all">
-                            UPLOAD PROOF IMAGE
-                            <input
-                                type="file"
-                                name="transactionProof"
-                                accept="image/*"
-                                onChange={handleProofUpload}
-                                className="hidden"
-                            />
-                        </label>
-                        {transactionProof && (
-                            <div className="mt-2">
-                                <span className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded">{transactionProof.split('/')[2]}</span>
-                            </div>
-                        )}
+                        <div>
+                            <label className="block mb-2 text-white">TRANSACTION PROOF</label>
+                            <label className={`flex items-center gap-2 cursor-pointer bg-white/5 border px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all ${errors.transactionProof ? 'border-red-500 bg-red-500/10' : 'border-white/10'}`}>
+                                UPLOAD PROOF IMAGE
+                                <input
+                                    type="file"
+                                    name="transactionProof"
+                                    accept="image/*"
+                                    onChange={handleProofUpload}
+                                    className="hidden"
+                                />
+                            </label>
+                            {transactionProof && (
+                                <div className="mt-2">
+                                    <span className="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">✓ {transactionProof.split('/')[2]}</span>
+                                </div>
+                            )}
+                            {errors.transactionProof && <p className="text-red-500 text-sm mt-1">{errors.transactionProof}</p>}
+                        </div>
                     </div>
 
                     <div className="border-t border-gray-800 pt-4 mt-8">
                         <div className="flex justify-between mb-2 text-gray-100">
                             <span>Subtotal ({quantity} item):</span>
-                            <span>${subtotal.toFixed(2)}</span>
+                            <span>Rs. {subtotal.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between mb-2 text-gray-100">
                             <span>Delivery Fee:</span>
-                            <span>${deliveryFee.toFixed(2)}</span>
+                            <span>Rs. {deliveryFee.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between mb-2 text-gray-100">
                             <span>Tax (8%):</span>
-                            <span>${tax.toFixed(2)}</span>
+                            <span>Rs. {tax.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between text-xl font-medium text-orange-500">
                             <span>TOTAL:</span>
-                            <span>${total.toFixed(2)}</span>
+                            <span>Rs. {total.toFixed(2)}</span>
                         </div>
                     </div>
 
@@ -274,6 +261,8 @@ export default function OrderForm() {
                         type="submit"
                         onClick={(e) => {
                             e.preventDefault()
+
+                            if (!validateForm()) return
 
                             const orderData = {
                                 ...formData,
@@ -286,8 +275,6 @@ export default function OrderForm() {
                                 transactionProof,
                                 transactionProofFile
                             }
-
-                            // Store the file in sessionStorage if it exists
 
                             setOrderData(orderData)
                             router.push('/checkout')

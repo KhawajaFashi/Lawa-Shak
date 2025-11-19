@@ -3,11 +3,12 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const images = [
-    { url: "/1st Screen.png" },
-    { url: "/2nd Screen.png" },
+    { url: "/Pic1.jpg" },
+    { url: "/Pic2.jpg" },
     { url: "/3rd Screen.png" },
     { url: "/4th Screen.png" },
-    { url: "/5th Screen.png" },
+    { url: "/4th Screen.png" },
+    { url: "/4th Screen.png" },
 ];
 
 export default function ImageSlider() {
@@ -42,7 +43,7 @@ export default function ImageSlider() {
                         alt={`slide-${idx}`}
                         width={1900}
                         height={1900}
-                        className="w-full h-[80vh] object-cover shrink-0 mr-[15%]"
+                        className="w-full h-[70vh] object-cover shrink-0 mr-[15%]"
                     />
                 ))}
             </div>

@@ -2,7 +2,7 @@ import { MdHome, MdReviews } from "react-icons/md";
 import { IoPeople } from "react-icons/io5";
 import { PiChefHatBold } from "react-icons/pi";
 import { SiMinutemailer } from "react-icons/si";
-import { FaFacebook, FaInstagram, FaQuestion, FaTiktok } from "react-icons/fa";
+import { FaQuestion, FaTiktok } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Navigation() {
@@ -55,17 +55,9 @@ export default function Navigation() {
 
             {/* Social Media Icons */}
             <div className="flex flex-col items-center gap-6 pb-2">
-                <button aria-label="Instagram" className="nav-icon">
-                    <FaInstagram size={20} />
-                </button>
-
-                <button aria-label="Facebook" className="nav-icon">
-                    <FaFacebook size={20} />
-                </button>
-
-                <button aria-label="Tiktok" className="nav-icon">
+                <Link href="https://www.tiktok.com/@hot.slice.dina?_r=1&_t=ZS-91LV2f74eoa" target="_blank" aria-label="Tiktok" className="nav-icon">
                     <FaTiktok size={20} />
-                </button>
+                </Link>
             </div>
         </aside>
     );
