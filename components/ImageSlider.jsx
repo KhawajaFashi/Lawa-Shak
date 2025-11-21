@@ -3,12 +3,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const images = [
-    { url: "/Pic1.jpg" },
-    { url: "/Pic2.jpg" },
-    { url: "/3rd Screen.png" },
-    { url: "/4th Screen.png" },
-    { url: "/4th Screen.png" },
-    { url: "/4th Screen.png" },
+    { url: "/Slide1.jpg" },
+    { url: "/Slide2.jpg" },
+    { url: "/Slide3.jpg" },
+    { url: "/Slide4.jpg" },
+    { url: "/Slide5.jpg" },
 ];
 
 export default function ImageSlider() {
@@ -24,7 +23,7 @@ export default function ImageSlider() {
     const goTo = (index) => setCurrent(index);
 
     return (
-        <div className="relative py-24 pb-12 px-[10%] bg-[#0A0A0A] w-full overflow-hidden">
+        <div id="images" className="relative py-24 pb-12 px-[10%] bg-[#0A0A0A] w-full overflow-hidden">
             {/* Slides */}
             <h2
                 className="text-5xl font-extrabold text-orange-500 tracking-wider mb-12"
@@ -43,7 +42,7 @@ export default function ImageSlider() {
                         alt={`slide-${idx}`}
                         width={1900}
                         height={1900}
-                        className="w-full h-[70vh] object-cover shrink-0 mr-[15%]"
+                        className="w-full h-[90vh] object-contain shrink-0 mr-[15%]"
                     />
                 ))}
             </div>

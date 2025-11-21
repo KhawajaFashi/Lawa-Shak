@@ -10,7 +10,7 @@ export default function Hero() {
             <div className="flex-1 relative md:hidden mx-auto">
                 <div className="relative w-[90%] max-w-[550px] mx-auto mb-20">
                     <Image
-                        src="/HeroImg.jpg"
+                        src="/Hero.jpg"
                         alt="Molten chocolate dessert"
                         width={600}
                         height={600}
@@ -57,7 +57,7 @@ export default function Hero() {
             <div className="flex-1 relative max-md:hidden">
                 <div className="relative w-[90%] max-w-[550px] ml-auto">
                     <Image
-                        src="/HeroImg.jpg"
+                        src="/Hero.jpg"
                         alt="Molten chocolate dessert"
                         width={600}
                         height={600}

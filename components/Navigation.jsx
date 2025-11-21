@@ -1,5 +1,5 @@
 import { MdHome, MdReviews } from "react-icons/md";
-import { IoPeople } from "react-icons/io5";
+import { IoImages, IoPeople } from "react-icons/io5";
 import { PiChefHatBold } from "react-icons/pi";
 import { SiMinutemailer } from "react-icons/si";
 import { FaQuestion, FaTiktok } from "react-icons/fa";
@@ -25,6 +25,11 @@ export default function Navigation() {
                     <Link href="/#about">
                         <button aria-label="About" className="nav-icon">
                             <IoPeople size={20} />
+                        </button>
+                    </Link>
+                    <Link href="/#images">
+                        <button aria-label="Images" className="nav-icon">
+                            <IoImages size={20} />
                         </button>
                     </Link>
 
