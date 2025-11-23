@@ -23,7 +23,6 @@ export default function OrderForm() {
     const [errors, setErrors] = useState({})
     const basePrice = 420.99
     const deliveryFee = 5.00
-    const taxRate = 0.08
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -57,8 +56,7 @@ export default function OrderForm() {
 
 
     const subtotal = basePrice * quantity
-    const tax = subtotal * taxRate
-    const total = subtotal + deliveryFee + tax
+    const total = subtotal + deliveryFee
 
     const validateForm = () => {
         const newErrors = {}
@@ -247,10 +245,6 @@ export default function OrderForm() {
                             <span>Delivery Fee:</span>
                             <span>Rs. {deliveryFee.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between mb-2 text-gray-100">
-                            <span>Tax (8%):</span>
-                            <span>Rs. {tax.toFixed(2)}</span>
-                        </div>
                         <div className="flex justify-between text-xl font-medium text-orange-500">
                             <span>TOTAL:</span>
                             <span>Rs. {total.toFixed(2)}</span>
@@ -270,7 +264,6 @@ export default function OrderForm() {
                                 deliveryOption,
                                 subtotal,
                                 deliveryFee,
-                                tax,
                                 total,
                                 transactionProof,
                                 transactionProofFile

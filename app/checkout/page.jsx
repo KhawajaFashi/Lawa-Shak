@@ -162,10 +162,6 @@ export default function CheckoutPage() {
                                     <p className="text-gray-400">Delivery Fee</p>
                                     <p className="text-white">Rs. {orderData.deliveryFee.toFixed(2)}</p>
                                 </div>
-                                <div className="flex justify-between mb-2">
-                                    <p className="text-gray-400">Tax</p>
-                                    <p className="text-white">Rs. {orderData.tax.toFixed(2)}</p>
-                                </div>
                                 <div className="flex justify-between text-xl font-medium text-orange-500">
                                     <p>Total</p>
                                     <p>Rs. {orderData.total.toFixed(2)}</p>

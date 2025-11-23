@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
+import Link from "next/link";
 
 const socials = [
     { icon: FaTiktok, href: "https://www.tiktok.com/@hot.slice.dina?_r=1&_t=ZS-91LV2f74eoa" },
@@ -109,9 +110,11 @@ export default function Contact() {
                         </p>
 
                         {/* Map Button */}
-                        <button className="border border-orange-500 text-orange-500 px-6 py-2 rounded-full flex items-center gap-2 hover:bg-orange-500 hover:text-black transition-all font-medium shadow-[0_0_12px_rgba(255,138,0,0.3)]">
+                        <button className="border border-orange-500 text-orange-500 px-6 py-2 rounded-full  hover:bg-orange-500 hover:text-black transition-all font-medium shadow-[0_0_12px_rgba(255,138,0,0.3)]">
+                            <Link href="https://maps.app.goo.gl/L9BdpUUrtrKR8pycA?g_st=aw" className="flex items-center gap-2" target="_blank" >
                             <MapPin className="w-5 h-5" />
                             View on Map
+                        </Link>
                         </button>
 
                         {/* Contact List */}
@@ -119,16 +122,16 @@ export default function Contact() {
 
                             <div className="flex items-center gap-4">
                                 <Mail className="text-orange-500 w-5 h-5" />
-                                <a href="mailto:Mojee544@gmail.com" className="text-gray-300 hover:text-orange-500">
+                                <Link href="mailto:Mojee544@gmail.com" className="text-gray-300 hover:text-orange-500">
                                     Mojee544@gmail.com
-                                </a>
+                                </Link>
                             </div>
 
                             <div className="flex items-center gap-4">
                                 <Phone className="text-orange-500 w-5 h-5" />
-                                <a href="tel:+923145433000" className="text-gray-300 hover:text-orange-500">
+                                <Link href="tel:+923145433000" className="text-gray-300 hover:text-orange-500">
                                     +92 314 5433000
-                                </a>
+                                </Link>
                             </div>
 
                             <div className="flex items-center gap-4">
@@ -138,7 +141,7 @@ export default function Contact() {
 
                             <div className="flex items-center gap-4">
                                 <MapPin className="text-orange-500 w-5 h-5" />
-                                <span className="text-gray-300">123 Dessert Lane, Sweet City</span>
+                                <Link href="https://maps.app.goo.gl/L9BdpUUrtrKR8pycA?g_st=aw" target="_blank" className="text-gray-300 hover:text-orange-500">Mangla Road Dina</Link>
                             </div>
                         </div>
 
