@@ -21,8 +21,8 @@ export default function OrderForm() {
     const [transactionProof, setTransactionProof] = useState(null)
     const [transactionProofFile, setTransactionProofFile] = useState(null)
     const [errors, setErrors] = useState({})
-    const basePrice = 420.99
-    const deliveryFee = 5.00
+    const basePrice = 950.99
+    const deliveryFee = 300.00
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
