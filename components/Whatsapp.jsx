@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 // /c:/Users/HP/Desktop/Lawa-Shak/components/Whatsapp.jsx
 
-export default function Whatsapp({ phone = "923145433000", message = "This is the message sent by automated whatsapp chat", size = 56 }) {
+export default function Whatsapp({ phone = "923145433000", message = "Hello, I have a question regarding your services.", size = 56 }) {
     const [hover, setHover] = useState(false);
     const href = `https://api.whatsapp.com/send?phone=${phone}${message ? `&text=${encodeURIComponent(message)}` : ""}`;
 
