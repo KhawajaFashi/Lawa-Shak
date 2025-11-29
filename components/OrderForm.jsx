@@ -4,9 +4,41 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useOrder } from '@/context/OrderContext'
 
+const boxTypes = [
+    {
+        id: 'simple',
+        name: 'Simple Box',
+        price: 950,
+        delivery: 300,
+        description: '10 lavashak roll sheet'
+    },
+    {
+        id: 'dubai',
+        name: 'Dubai Lavashak Box',
+        price: 950,
+        delivery: 300,
+        description: '10 roll sheets with ANAAR sweet souce & Immli Alu Bukhara sweet souce'
+    },
+    {
+        id: 'small',
+        name: 'Small Box',
+        price: 500,
+        delivery: 150,
+        description: '7 small sheets'
+    },
+    {
+        id: 'mix',
+        name: 'Mix Box',
+        price: 950,
+        delivery: 300,
+        description: '5 lavashak roll sheet, 5 humpa bar, 4 spicy laddu, Masala Noodles, Meethi imli'
+    }
+]
+
 export default function OrderForm() {
     const router = useRouter()
     const { setOrderData } = useOrder()
+    const [selectedBox, setSelectedBox] = useState(boxTypes[0])
     const [quantity, setQuantity] = useState(1)
     const [deliveryOption, setDeliveryOption] = useState('standard')
     const [formData, setFormData] = useState({
@@ -21,8 +53,6 @@ export default function OrderForm() {
     const [transactionProof, setTransactionProof] = useState(null)
     const [transactionProofFile, setTransactionProofFile] = useState(null)
     const [errors, setErrors] = useState({})
-    const basePrice = 950.99
-    const deliveryFee = 300.00
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -55,8 +85,8 @@ export default function OrderForm() {
     };
 
 
-    const subtotal = basePrice * quantity
-    const total = subtotal + deliveryFee
+    const subtotal = selectedBox.price * quantity
+    const total = subtotal + selectedBox.delivery
 
     const validateForm = () => {
         const newErrors = {}
@@ -82,10 +112,43 @@ export default function OrderForm() {
             <div className="container mx-auto px-4 max-w-4xl">
                 <div className="mb-8">
                     <p className="text-gray-400">STARTING PRICE</p>
-                    <h2 className="text-4xl text-orange-500">Rs.{basePrice.toFixed(2)}</h2>
+                    <h2 className="text-4xl text-orange-500">Rs.{selectedBox.price.toFixed(2)}</h2>
                 </div>
 
                 <form className="space-y-6">
+                    <div className='flex flex-col gap-4 mb-8'>
+                        <label className="block mb-2 text-white text-lg">Select Box Type</label>
+                        {boxTypes.map((box) => (
+                            <label
+                                key={box.id}
+                                className={`flex items-start p-4 border rounded-lg cursor-pointer transition-all ${selectedBox.id === box.id
+                                        ? 'border-orange-500 bg-orange-500/10'
+                                        : 'border-gray-700 hover:border-gray-500'
+                                    }`}
+                            >
+                                <input
+                                    type="radio"
+                                    name="box"
+                                    checked={selectedBox.id === box.id}
+                                    onChange={() => setSelectedBox(box)}
+                                    className="mt-1 mr-4 accent-orange-500"
+                                />
+                                <div className='w-full'>
+                                    <div className="flex justify-between items-center w-full">
+                                        <span className="text-white font-medium text-lg">{box.name}</span>
+                                        <span className="text-orange-500 font-bold">Rs. {box.price}</span>
+                                    </div>
+                                    <p className="text-gray-400 text-sm mt-1 whitespace-pre-line">
+                                        {box.description}
+                                    </p>
+                                    <p className="text-gray-500 text-xs mt-1">
+                                        Delivery: Rs. {box.delivery}
+                                    </p>
+                                </div>
+                            </label>
+                        ))}
+                    </div>
+
                     <div>
                         <label className="block mb-2 text-white">QUANTITY</label>
                         <div className="flex items-center gap-4 w-32">
@@ -243,7 +306,7 @@ export default function OrderForm() {
                         </div>
                         <div className="flex justify-between mb-2 text-gray-100">
                             <span>Delivery Fee:</span>
-                            <span>Rs. {deliveryFee.toFixed(2)}</span>
+                            <span>Rs. {selectedBox.delivery.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between text-xl font-medium text-orange-500">
                             <span>TOTAL:</span>
@@ -263,10 +326,12 @@ export default function OrderForm() {
                                 quantity,
                                 deliveryOption,
                                 subtotal,
-                                deliveryFee,
+                                deliveryFee: selectedBox.delivery,
                                 total,
                                 transactionProof,
-                                transactionProofFile
+                                transactionProofFile,
+                                boxType: selectedBox.name,
+                                boxDetails: selectedBox.description
                             }
 
                             setOrderData(orderData)

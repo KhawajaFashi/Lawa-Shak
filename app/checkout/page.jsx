@@ -10,7 +10,7 @@ export default function CheckoutPage() {
     const { orderData } = useOrder()
     const [showWhatsAppModal, setShowWhatsAppModal] = useState(false)
     const [sending, setSending] = useState(false)
-    const ownerWhatsApp = process.env.NEXT_PUBLIC_OWNER_WHATSAPP || '+923135520955'
+    const ownerWhatsApp = process.env.NEXT_PUBLIC_OWNER_WHATSAPP || '+923145433000'
 
     const labelize = (key) =>
         key.replace(/([A-Z])/g, ' $1').replace(/^./, c => c.toUpperCase())
@@ -127,16 +127,20 @@ export default function CheckoutPage() {
                                 <p className="text-gray-400">Postal Code</p>
                                 <p className="text-white">{orderData.postalCode}</p>
                             </div>
-                            <div>
-                                <p className="text-gray-400">Country</p>
-                                <p className="text-white">{orderData.country}</p>
-                            </div>
                         </div>
                     </div>
 
                     <div className="bg-gray-900 rounded-lg p-6 mb-8">
                         <h2 className="text-xl text-white mb-4">Order Details</h2>
                         <div className="space-y-2">
+                            <div className="flex justify-between">
+                                <p className="text-gray-400">Box Type</p>
+                                <p className="text-white text-right">{orderData.boxType}</p>
+                            </div>
+                            <div className="flex justify-between">
+                                <p className="text-gray-400">Box Details</p>
+                                <p className="text-white text-right max-w-[60%]">{orderData.boxDetails}</p>
+                            </div>
                             <div className="flex justify-between">
                                 <p className="text-gray-400">Quantity</p>
                                 <p className="text-white">{orderData.quantity}</p>

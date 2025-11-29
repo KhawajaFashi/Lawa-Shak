@@ -10,7 +10,7 @@ export default function Hero() {
             <div className="flex-1 relative md:hidden mx-auto">
                 <div className="relative w-[90%] max-w-[550px] mx-auto mb-20">
                     <Image
-                        src="/Hero.jpg"
+                        src="/HeroImage.jpg"
                         alt="Molten chocolate dessert"
                         width={600}
                         height={600}
@@ -57,11 +57,11 @@ export default function Hero() {
             <div className="flex-1 relative max-md:hidden">
                 <div className="relative w-[90%] max-w-[550px] ml-auto">
                     <Image
-                        src="/Hero.jpg"
+                        src="/HeroImage.jpg"
                         alt="Molten chocolate dessert"
                         width={600}
                         height={600}
-                        className="rounded-xl w-190 h-110 object-cover drop-shadow-[0_0_25px_rgba(255,128,0,0.4)]"
+                        className="rounded-xl w-190 h-110 object-contain drop-shadow-[0_0_25px_rgba(255,128,0,0.4)]"
                     />
 
                     {/* Optional orange glow behind dessert */}
