@@ -77,7 +77,7 @@ export default function PaymentOptions() {
                         <div className="space-y-3 text-gray-300 text-sm">
                             <h3 className="text-lg font-semibold text-orange-500 mb-4">UBL Account Details</h3>
                             <div>
-                                <p className="text-gray-400">Card Number</p>
+                                <p className="text-gray-400">Account Number</p>
                                 <p className="text-white font-mono">{bankAccounts.UblAccount.accountNumber}</p>
                             </div>
                             <div>
