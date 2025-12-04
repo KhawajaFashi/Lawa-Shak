@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
-import { uploadToCloudinary } from "@/lib/cloudinary";
+import { uploadToCloudinary, fetchFromCloudinary } from "@/lib/cloudinary";
 
 export async function POST(req) {
     const form = await req.formData();
@@ -16,13 +14,10 @@ export async function POST(req) {
     if (profilePhoto) {
         try {
             const buf = Buffer.from(await profilePhoto.arrayBuffer());
-            console.log('Uploading profile photo to Cloudinary', buf);
-            const result = await uploadToCloudinary(buf, 'lava-shak/reviews');
+            const result = await uploadToCloudinary(buf, 'lava-shak/reviews/photos');
             savedProfile = result.secure_url;
-            console.log('Uploading profile', savedProfile);
         } catch (error) {
             console.error('Error uploading profile photo:', error);
-            // Continue without profile photo or handle error as needed
         }
     }
 
@@ -35,17 +30,27 @@ export async function POST(req) {
         date: new Date().toISOString(),
     };
 
-    const filePath = path.join(process.cwd(), "review.json");
-
+    // Step 1: Fetch existing reviews JSON from Cloudinary
     let existing = [];
     try {
-        const raw = await fs.readFile(filePath, "utf8");
-        existing = JSON.parse(raw);
-    } catch { }
+        const jsonFile = await fetchFromCloudinary('lava-shak/reviews/reviews.json');
+        if (jsonFile) {
+            existing = JSON.parse(jsonFile);
+        }
+    } catch (error) {
+        console.log('No existing reviews or failed to fetch, starting fresh.');
+    }
 
+    // Step 2: Add new review
     existing.push(review);
 
-    await fs.writeFile(filePath, JSON.stringify(existing, null, 2));
+    // Step 3: Upload updated reviews JSON back to Cloudinary
+    try {
+        const buf = Buffer.from(JSON.stringify(existing, null, 2));
+        await uploadToCloudinary(buf, 'lava-shak/reviews/reviews.json', { resource_type: 'raw', overwrite: true });
+    } catch (error) {
+        console.error('Error uploading reviews JSON:', error);
+    }
 
     return NextResponse.json({ success: true, review });
 }

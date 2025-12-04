@@ -1,14 +1,11 @@
 "use client";
 
-import { useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import reviewsData from "@/review.json";
-
 import useEmblaCarousel from "embla-carousel-react";
-
-// COMPONENT IMPORT
 import { FaStar } from "react-icons/fa";
 
+// Function to calculate time ago
 function timeAgo(dateString) {
     const d = new Date(dateString);
     const diff = (Date.now() - d.getTime()) / 1000;
@@ -18,15 +15,32 @@ function timeAgo(dateString) {
     return `${Math.floor(diff / 86400)}d ago`;
 }
 
-
 export default function Reviews() {
+    const [reviewsData, setReviewsData] = useState([]);
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+
     const scrollPrev = useCallback(() => {
         if (emblaApi) emblaApi.scrollPrev();
     }, [emblaApi]);
     const scrollNext = useCallback(() => {
         if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
+
+    // Fetch reviews JSON from Cloudinary
+    useEffect(() => {
+        async function fetchReviews() {
+            try {
+                const res = await fetch("/api/fetchReviews");
+                const data = await res.json();
+                setReviewsData(data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        fetchReviews();
+    }, []);
+
+
     return (
         <section className="py-24 px-[8%] bg-[#0A0A0A]" id="reviews">
             <h2 className="text-4xl font-bold text-orange-500 mb-10">
@@ -34,7 +48,6 @@ export default function Reviews() {
             </h2>
 
             <div className="relative">
-                {/* OUTER CAROUSEL */}
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex">
                         {reviewsData.map((review, index) => (
@@ -47,6 +60,7 @@ export default function Reviews() {
                         ))}
                     </div>
                 </div>
+
                 {/* Carousel Controls */}
                 <button
                     onClick={scrollPrev}
@@ -75,8 +89,6 @@ function ReviewCard({ review, delay }) {
             className="bg-white/5 border w-96 border-white/10 rounded-xl p-6 flex flex-col items-center max-sm:w-full"
             style={{ animationDelay: `${delay}s` }}
         >
-            {/* PROFILE */}
-            {/* <div className="flex flex-col items-center gap-4 mb-4"> */}
             <div className="w-24 h-24 rounded-full overflow-hidden">
                 <Image
                     src={review.profilePhoto || "/assets/default.png"}
@@ -85,37 +97,26 @@ function ReviewCard({ review, delay }) {
                     height={1925}
                     className="object-cover w-full h-full"
                 />
-                {/* </div> */}
-                {/* COMMENT FIXED WRAPPING */}
-
             </div>
+
             <p className="text-gray-300 leading-relaxed mb-4 wrap-break-word text-center w-84 mt-8 max-sm:w-full">
                 {review.comments}
             </p>
 
-            {/* STARS */}
             <div className="flex mb-3">
                 {Array.from({ length: 5 }).map((_, i) => (
                     <FaStar
                         key={i}
                         size={22}
-                        className={
-                            `${i < review.rating
-                                ? "text-orange-500"
-                                : "text-gray-600"}
-                                mx-1
-                            `
-                        }
+                        className={`${i < review.rating ? "text-orange-500" : "text-gray-600"} mx-1`}
                     />
                 ))}
             </div>
+
             <div className="flex flex-col items-center gap-2">
                 <h1 className="text-white font-semibold text-xl">{review.name}</h1>
-                <p className="text-sm text-gray-400">
-                    {timeAgo(review.date)}
-                </p>
+                <p className="text-sm text-gray-400">{timeAgo(review.date)}</p>
             </div>
-
         </div>
     );
 }
