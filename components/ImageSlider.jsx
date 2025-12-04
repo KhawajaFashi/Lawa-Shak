@@ -3,11 +3,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const images = [
-    { url: "/1.jpg" },
-    { url: "/2.jpg" },
-    { url: "/3.jpg" },
-    { url: "/4.jpg" },
-    { url: "/5.jpg" },
+    { url: "/Simple.jpg" },
+    { url: "/Dubai.jpg" },
+    { url: "/Small.jpg" },
+    { url: "/Mix.jpg" },
+    { url: "/Deal.jpg" },
 ];
 
 export default function ImageSlider() {

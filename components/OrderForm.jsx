@@ -10,29 +10,41 @@ const boxTypes = [
         name: 'Simple Box',
         price: 950,
         delivery: 300,
-        description: '10 lavashak roll sheet'
-    },
-    {
-        id: 'dubai',
-        name: 'Dubai Lavashak Box',
-        price: 950,
-        delivery: 300,
-        description: '10 roll sheets with ANAAR sweet souce & Immli Alu Bukhara sweet souce'
-    },
-    {
-        id: 'small',
-        name: 'Small Box',
-        price: 500,
-        delivery: 150,
-        description: '7 small sheets'
+        description: '10 lavashak roll sheet',
+        image: '/Simple.jpg'
     },
     {
         id: 'mix',
         name: 'Mix Box',
         price: 950,
         delivery: 300,
-        description: '5 lavashak roll sheet, 5 humpa bar, 4 spicy laddu, Masala Noodles, Meethi imli'
-    }
+        description: '5 lavashak roll sheet, 5 humpa bar, 4 spicy laddu, Masala Noodles, Meethi imli',
+        image: '/Mix.jpg'
+    },
+    {
+        id: 'dubai',
+        name: 'Dubai Lavashak Box',
+        price: 950,
+        delivery: 300,
+        description: '10 roll sheets with ANAAR sweet souce & Immli Alu Bukhara sweet souce',
+        image: '/Dubai.jpg'
+    },
+    {
+        id: 'small',
+        name: 'Small Box',
+        price: 500,
+        delivery: 150,
+        description: '7 small sheets',
+        image: '/Small.jpg'
+    },
+    {
+        id: 'deal',
+        name: 'Hot Slice Special Deal',
+        price: 3500,
+        delivery: 350,
+        description: '1 Simple Box, 1 Mix Box, 1 Dubai Lavashak Box, 1 Small Box',
+        image: '/Deal.jpg'
+    },
 ]
 
 export default function OrderForm() {
@@ -115,6 +127,17 @@ export default function OrderForm() {
                     <h2 className="text-4xl text-orange-500">Rs.{selectedBox.price.toFixed(2)}</h2>
                 </div>
 
+                {/* Box Image Display */}
+                <div className="mb-8 w-full flex justify-center">
+                    <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                        <img
+                            src={selectedBox.image}
+                            alt={selectedBox.name}
+                            className="w-full h-full object-contain"
+                        />
+                    </div>
+                </div>
+
                 <form className="space-y-6">
                     <div className='flex flex-col gap-4 mb-8'>
                         <label className="block mb-2 text-white text-lg">Select Box Type</label>
@@ -122,8 +145,8 @@ export default function OrderForm() {
                             <label
                                 key={box.id}
                                 className={`flex items-start p-4 border rounded-lg cursor-pointer transition-all ${selectedBox.id === box.id
-                                        ? 'border-orange-500 bg-orange-500/10'
-                                        : 'border-gray-700 hover:border-gray-500'
+                                    ? 'border-orange-500 bg-orange-500/10'
+                                    : 'border-gray-700 hover:border-gray-500'
                                     }`}
                             >
                                 <input
