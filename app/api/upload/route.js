@@ -1,7 +1,5 @@
-// app/api/upload/route.js (Next.js 13+ App Router)
-import fs from 'fs';
-import path from 'path';
 import { NextResponse } from 'next/server';
+import { uploadToCloudinary } from '@/lib/cloudinary';
 
 export const POST = async (req) => {
     const data = await req.formData();
@@ -11,11 +9,13 @@ export const POST = async (req) => {
         return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const filename = `${Date.now()}-${file.name}`;
-    const filePath = path.join(process.cwd(), 'public', 'assets', filename);
+    try {
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const result = await uploadToCloudinary(buffer, 'lawa-shak/transactions');
 
-    fs.writeFileSync(filePath, buffer);
-
-    return NextResponse.json({ path: `/assets/${filename}` });
+        return NextResponse.json({ path: result.secure_url });
+    } catch (error) {
+        console.error('Upload error:', error);
+        return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+    }
 };

@@ -1,34 +1,10 @@
 [
     {
-        "id": 1762792874690,
+        "id": 1764875076369,
         "name": "Khawaja Fashi Ud Din Abdullah ",
-        "rating": "4",
-        "comments": "Hello lorem this is the comment section for the reviews. Here users can leave their feedback and share their experiences regarding the product or service being reviewed. This section is designed to provide valuable insights and help other potential customers make informed decisions.",
-        "profilePhoto": null,
-        "date": "2025-11-10T16:41:14.690Z"
-    },
-    {
-        "id": 1762792902484,
-        "name": "Khawaja",
-        "rating": "4",
-        "comments": "Hello lorem23 this is the comment section for the reviews. Here users can leave their feedback and share their experiences regarding the product or service being reviewed. This section is designed to provide valuable insights and help other potential customers make informed decisions.",
-        "profilePhoto": "/assets/profile-1762792902482-709075.jpg",
-        "date": "2025-11-10T16:41:42.484Z"
-    },
-    {
-        "id": 1762794725119,
-        "name": "Khawaja Fashi Ud Din ",
-        "rating": "3",
-        "comments": "The longest word in any of the major English language dictionaries is , a word that refers to a lung disease contracted from the inhalation of very fine silica particles, specifically from a volcano; medically, it is the same as silicosis.",
-        "profilePhoto": "/assets/profile-1762794725117-thumbnail.jpg",
-        "date": "2025-11-10T17:12:05.119Z"
-    },
-    {
-        "id": 17627947251487,
-        "name": "Khawaja Fashi Ud Din ",
-        "rating": "3",
-        "comments": "The longest word in any of the major English language dictionaries is , a word that refers to a lung disease contracted from the inhalation of very fine silica particles, specifically from a volcano; medically, it is the same as silicosis.",
-        "profilePhoto": "/assets/profile-1762794725117-thumbnail.jpg",
-        "date": "2025-11-09T17:12:05.119Z"
+        "rating": "5",
+        "comments": "The experience was great and specially lawa shak was great",
+        "profilePhoto": "https://res.cloudinary.com/dsrlhyu6x/image/upload/v1764875075/lawa-shak/reviews/fvfefnlw1evpb42qeaio.jpg",
+        "date": "2025-12-04T19:04:36.369Z"
     }
 ]

@@ -90,6 +90,7 @@ export default function OrderForm() {
         });
 
         const data = await res.json();
+        // console.log("Upload response data:", data);
         if (data.path) {
             setTransactionProof(data.path); // store the path, not the file itself
             setErrors(prev => ({ ...prev, transactionProof: undefined }))
@@ -315,7 +316,7 @@ export default function OrderForm() {
                             </label>
                             {transactionProof && (
                                 <div className="mt-2">
-                                    <span className="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">✓ {transactionProof.split('/')[2]}</span>
+                                    <span className="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">✓ Uploaded</span>
                                 </div>
                             )}
                             {errors.transactionProof && <p className="text-red-500 text-sm mt-1">{errors.transactionProof}</p>}

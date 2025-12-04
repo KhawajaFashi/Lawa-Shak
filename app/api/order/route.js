@@ -4,6 +4,7 @@ import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
 import { promises as fs } from 'fs'
 import path from 'path'
 import imageType from 'image-type'
+import { uploadToCloudinary } from '@/lib/cloudinary'
 
 const labelize = (key) =>
     key.replace(/([A-Z])/g, ' $1').replace(/^./, c => c.toUpperCase())
@@ -22,13 +23,8 @@ export async function POST(req) {
         // ================================
         if (transactionProofFile && transactionProofFile.size > 0) {
             const buffer = Buffer.from(await transactionProofFile.arrayBuffer())
-            const ext = path.extname(transactionProofFile.name)
-            const fileName = `proof-${Date.now()}-${Math.random().toString(36).substring(7)}${ext}`
-            const assetsDir = path.join(process.cwd(), 'public', 'assets')
-            await fs.mkdir(assetsDir, { recursive: true })
-            const savedPath = path.join(assetsDir, fileName)
-            await fs.writeFile(savedPath, buffer)
-            orderData.transactionProof = `/assets/${fileName}` // public URL path
+            const result = await uploadToCloudinary(buffer, 'lawa-shak/orders')
+            orderData.transactionProof = result.secure_url
         }
 
         // ================================
@@ -66,8 +62,9 @@ export async function POST(req) {
         // ================================
         if (orderData.transactionProof) {
             try {
-                const imagePath = path.join(process.cwd(), 'public', orderData.transactionProof)
-                const imageBuffer = await fs.readFile(imagePath)
+                const response = await fetch(orderData.transactionProof);
+                const arrayBuffer = await response.arrayBuffer();
+                const imageBuffer = Buffer.from(arrayBuffer);
                 const type = await imageType(imageBuffer)
                 if (!type) throw new Error('Uploaded file is not a valid image')
                 // ('Detected type:', type)

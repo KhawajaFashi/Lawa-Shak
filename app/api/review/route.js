@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
+import { uploadToCloudinary } from "@/lib/cloudinary";
 
 export async function POST(req) {
     const form = await req.formData();
@@ -11,15 +12,16 @@ export async function POST(req) {
 
     const profilePhoto = form.get("profilePhoto");
 
-    const uploadDir = path.join(process.cwd(), "public", "assets");
-    await fs.mkdir(uploadDir, { recursive: true });
-
     let savedProfile = null;
     if (profilePhoto) {
-        const buf = Buffer.from(await profilePhoto.arrayBuffer());
-        const fileName = `profile-${Date.now()}-${profilePhoto.name}`;
-        await fs.writeFile(path.join(uploadDir, fileName), buf);
-        savedProfile = `/assets/${fileName}`;
+        try {
+            const buf = Buffer.from(await profilePhoto.arrayBuffer());
+            const result = await uploadToCloudinary(buf, 'lawa-shak/reviews');
+            savedProfile = result.secure_url;
+        } catch (error) {
+            console.error('Error uploading profile photo:', error);
+            // Continue without profile photo or handle error as needed
+        }
     }
 
     const review = {
