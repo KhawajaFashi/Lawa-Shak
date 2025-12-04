@@ -16,8 +16,10 @@ export async function POST(req) {
     if (profilePhoto) {
         try {
             const buf = Buffer.from(await profilePhoto.arrayBuffer());
+            console.log('Uploading profile photo to Cloudinary', buf);
             const result = await uploadToCloudinary(buf, 'lava-shak/reviews');
             savedProfile = result.secure_url;
+            console.log('Uploading profile', savedProfile);
         } catch (error) {
             console.error('Error uploading profile photo:', error);
             // Continue without profile photo or handle error as needed

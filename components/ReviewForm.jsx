@@ -37,8 +37,7 @@ export default function ReviewForm() {
         setErrors(validationErrors)
         if (Object.keys(validationErrors).length === 0) {
             const formData = new FormData()
-            // Use a unique name for user (add timestamp and random string)
-            // const uniqueName = form.name + '-' + Date.now() + '-' + Math.random().toString(36).substring(2, 8)
+            
             formData.append('name', form.name)
             formData.append('rating', form.rating)
             formData.append('comments', form.comments)
