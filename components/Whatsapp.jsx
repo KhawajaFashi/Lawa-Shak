@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-// /c:/Users/HP/Desktop/Lawa-Shak/components/Whatsapp.jsx
+// /c:/Users/HP/Desktop/Lava-Shak/components/Whatsapp.jsx
 
 export default function Whatsapp({ phone = "923145433000", message = "Hello, I have a question regarding your services.", size = 56 }) {
     const [hover, setHover] = useState(false);

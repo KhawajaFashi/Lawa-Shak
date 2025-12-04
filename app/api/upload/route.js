@@ -11,7 +11,7 @@ export const POST = async (req) => {
 
     try {
         const buffer = Buffer.from(await file.arrayBuffer());
-        const result = await uploadToCloudinary(buffer, 'lawa-shak/transactions');
+        const result = await uploadToCloudinary(buffer, 'lava-shak/transactions');
 
         return NextResponse.json({ path: result.secure_url });
     } catch (error) {

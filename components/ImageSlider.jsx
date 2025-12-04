@@ -29,7 +29,7 @@ export default function ImageSlider() {
                 className="text-5xl font-extrabold text-orange-500 tracking-wider mb-12"
                 style={{ textShadow: "0 0 2px #ff8a00, 0 0 4px #ff8a00" }}
             >
-                LAWA SHAK
+                Lava SHAK
             </h2>
             <div
                 className="flex transition-transform duration-700 ease-in-out"

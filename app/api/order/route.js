@@ -23,7 +23,7 @@ export async function POST(req) {
         // ================================
         if (transactionProofFile && transactionProofFile.size > 0) {
             const buffer = Buffer.from(await transactionProofFile.arrayBuffer())
-            const result = await uploadToCloudinary(buffer, 'lawa-shak/orders')
+            const result = await uploadToCloudinary(buffer, 'lava-shak/orders')
             orderData.transactionProof = result.secure_url
         }
 

@@ -35,7 +35,7 @@ export default function Story() {
 
                     {/* SUBSECTION */}
                     <h3 className="text-orange-500 text-xl font-semibold mb-4 tracking-wider flex items-center gap-2">
-                        THE LAWA SHAK STORY
+                        THE Lava SHAK STORY
                         <span className="text-orange-500 opacity-80">
                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6H7v2h4v6h2v-6h4v-2h-4V7z" />
@@ -44,7 +44,7 @@ export default function Story() {
                     </h3>
 
                     <p className="text-gray-300 leading-relaxed mb-6 text-md">
-                        Lawa Shak is our signature creation—a dessert born from years of
+                        Lava Shak is our signature creation—a dessert born from years of
                         refinement. Its name reflects the layered complexity and bold richness
                         that define this extraordinary experience.
                     </p>
@@ -89,7 +89,7 @@ export default function Story() {
 
                         <div className="text-center">
                             <h4 className="text-orange-500 text-2xl font-semibold tracking-wide">
-                                LAWA SHAK
+                                Lava SHAK
                             </h4>
                             <p className="text-gray-400 text-sm tracking-wide mt-1">
                                 Premium Dessert Experience

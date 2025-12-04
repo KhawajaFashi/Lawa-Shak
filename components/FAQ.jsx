@@ -5,11 +5,11 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
     {
-        q: "What is Lawa Shak?",
-        a: "Lawa Shak is our signature molten dessert crafted with premium Belgian chocolate and a rich flowing center, made fresh for every order.",
+        q: "What is Lava Shak?",
+        a: "Lava Shak is our signature molten dessert crafted with premium Belgian chocolate and a rich flowing center, made fresh for every order.",
     },
     {
-        q: "Is Lawa Shak available for delivery?",
+        q: "Is Lava Shak available for delivery?",
         a: "Yes. We offer delivery through our partnered couriers. Delivery availability depends on your location.",
     },
     {
@@ -17,11 +17,11 @@ const faqs = [
         a: "Every dessert is made with ethically sourced premium ingredients including Belgian chocolate, Madagascar vanilla, and farm-fresh dairy.",
     },
     {
-        q: "Is Lawa Shak suitable for events?",
+        q: "Is Lava Shak suitable for events?",
         a: "Absolutely. We provide bulk orders and customized packaging for parties, corporate events, and special occasions.",
     },
     {
-        q: "How should I store Lawa Shak?",
+        q: "How should I store Lava Shak?",
         a: "Keep refrigerated if not eaten immediately. Reheat for 20–25 seconds for the perfect molten texture.",
     },
 ];

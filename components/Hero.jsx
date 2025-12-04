@@ -24,7 +24,7 @@ export default function Hero() {
             <div className="flex-1 max-w-xl z-10 ">
                 <h1 className="font-bold leading-[0.9] mb-8 max-md:text-center ">
                     <span className="max-xs:block text-white text-6xl md:text-7xl tracking-tight">
-                        LAWA
+                        Lava
                     </span>
                     <span className="max-xs:block ml-3 md:block md:ml-0 text-orange-500 text-6xl md:text-7xl tracking-tight drop-shadow-[0_0_20px_rgba(255,128,0,0.4)]">
                         SHAK

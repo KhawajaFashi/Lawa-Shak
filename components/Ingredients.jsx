@@ -53,7 +53,7 @@ export default function Ingredients() {
                     </h2>
 
                     <p className="text-gray-300 max-w-xl leading-relaxed mb-12">
-                        Every Lawa Shak dessert is crafted with the finest, ethically sourced
+                        Every Lava Shak dessert is crafted with the finest, ethically sourced
                         ingredients. Exceptional quality begins with exceptional ingredients.
                     </p>
 
