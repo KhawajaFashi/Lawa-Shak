@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useOrder } from '@/context/OrderContext'
+import Image from 'next/image'
 
 const boxTypes = [
     {
@@ -131,10 +132,13 @@ export default function OrderForm() {
                 {/* Box Image Display */}
                 <div className="mb-8 w-full flex justify-center">
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden">
-                        <img
+                        <Image
+                            key={selectedBox.id}
                             src={selectedBox.image}
                             alt={selectedBox.name}
-                            className="w-full h-full object-contain"
+                            className={`w-full h-full object-contain ${selectedBox.image ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+                            width={2000}
+                            height={2000}
                         />
                     </div>
                 </div>
