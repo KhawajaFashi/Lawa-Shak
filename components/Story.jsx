@@ -4,7 +4,7 @@ export default function Story() {
             id="about"
             className="relative"
         >
-            <div className="flex flex-col md:flex-row gap-16 items-start min-h-screen bg-gradient-to-br from-[#0d0d0d] to-[#1a0f07]">
+            <div className="flex flex-col md:flex-row gap-16 items-start min-h-screen bg-linear-to-br from-[#0d0d0d] to-[#1a0f07]">
 
                 {/* LEFT SIDE – TEXT */}
                 <div className="w-full pt-24 pb-12 pl-[10%] h-full">

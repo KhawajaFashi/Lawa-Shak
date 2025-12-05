@@ -66,6 +66,7 @@ export default function OrderForm() {
     const [transactionProof, setTransactionProof] = useState(null)
     const [transactionProofFile, setTransactionProofFile] = useState(null)
     const [errors, setErrors] = useState({})
+    const [uploadingProof, setUploadingProof] = useState(false)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -80,21 +81,29 @@ export default function OrderForm() {
         const file = e.target.files?.[0];
         if (!file) return;
 
+        setUploadingProof(true);
         const formData = new FormData();
         formData.append('transactionProof', file);
         console.log("Upload response:", file);
         setTransactionProofFile(file);
 
-        const res = await fetch('/api/upload', {
-            method: 'POST',
-            body: formData
-        });
+        try {
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            });
 
-        const data = await res.json();
-        // console.log("Upload response data:", data);
-        if (data.path) {
-            setTransactionProof(data.path); // store the path, not the file itself
-            setErrors(prev => ({ ...prev, transactionProof: undefined }))
+            const data = await res.json();
+            // console.log("Upload response data:", data);
+            if (data.path) {
+                setTransactionProof(data.path); // store the path, not the file itself
+                setErrors(prev => ({ ...prev, transactionProof: undefined }))
+            }
+        } catch (error) {
+            console.error('Upload error:', error);
+            setErrors(prev => ({ ...prev, transactionProof: 'Upload failed. Please try again.' }))
+        } finally {
+            setUploadingProof(false);
         }
     };
 
@@ -308,19 +317,32 @@ export default function OrderForm() {
 
                         <div>
                             <label className="block mb-2 text-white">TRANSACTION PROOF</label>
-                            <label className={`flex items-center gap-2 cursor-pointer bg-white/5 border px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all ${errors.transactionProof ? 'border-red-500 bg-red-500/10' : 'border-white/10'}`}>
-                                UPLOAD PROOF IMAGE
+                            <label className={`flex items-center gap-2 cursor-pointer bg-white/5 border px-4 py-3 rounded-lg text-white hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all ${errors.transactionProof ? 'border-red-500 bg-red-500/10' : 'border-white/10'} ${uploadingProof ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                                {uploadingProof ? (
+                                    <>
+                                        <div className="animate-spin inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full"></div>
+                                        UPLOADING...
+                                    </>
+                                ) : (
+                                    <>UPLOAD PROOF IMAGE</>
+                                )}
                                 <input
                                     type="file"
                                     name="transactionProof"
                                     accept="image/*"
                                     onChange={handleProofUpload}
+                                    disabled={uploadingProof}
                                     className="hidden"
                                 />
                             </label>
-                            {transactionProof && (
+                            {transactionProof && !uploadingProof && (
                                 <div className="mt-2">
                                     <span className="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">✓ Uploaded</span>
+                                </div>
+                            )}
+                            {uploadingProof && (
+                                <div className="mt-2">
+                                    <span className="text-xs text-blue-400 bg-blue-500/10 px-2 py-1 rounded">⏳ Uploading...</span>
                                 </div>
                             )}
                             {errors.transactionProof && <p className="text-red-500 text-sm mt-1">{errors.transactionProof}</p>}

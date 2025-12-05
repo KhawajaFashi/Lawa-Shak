@@ -151,7 +151,7 @@ export default function CheckoutPage() {
                                     <Image
                                         src={orderData.transactionProof}
                                         alt="Transaction Proof"
-                                        className="mt-2 max-w-2xl rounded"
+                                        className="mt-2 max-w-2xl rounded max-lg:w-full"
                                         width={1900}
                                         height={1900}
                                     />

@@ -6,7 +6,7 @@ export default function Hero() {
     const router = useRouter();
     const onOrderClick = () => router.push('/order');
     return (
-        <section id="home" className="relative min-h-screen flex items-center px-[10%] lg:pl-[12%] xl:pl-[9%] py-20 max-md:flex-col">
+        <section id="home" className="relative min-h-screen flex items-center px-[10%] lg:pl-[12%] xl:pl-[9%] py-20 max-md:flex-col bg-linear-to-br from-[#0d0d0d] to-[#1a0f07]">
             <div className="flex-1 relative md:hidden mx-auto">
                 <div className="relative w-[90%] max-w-[550px] mx-auto mb-20">
                     <Image
