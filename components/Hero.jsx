@@ -11,7 +11,7 @@ export default function Hero() {
                 <div className="relative w-[90%] max-w-[550px] mx-auto mb-20">
                     <Image
                         src="/HeroImage.jpg"
-                        alt="Molten chocolate dessert"
+                        alt="Premium Lavashak Fruit Leather"
                         width={600}
                         height={600}
                         className="rounded-xl object-contain drop-shadow-[0_0_25px_rgba(255,128,0,0.4)]"
@@ -32,13 +32,13 @@ export default function Hero() {
                 </h1>
 
                 <p className="text-orange-500 text-lg md:text-xl tracking-[0.15em] font-medium mb-6 max-md:text-center">
-                    MOLTEN CHOCOLATE EXPERIENCE
+                    AUTHENTIC PERSIAN FRUIT LEATHER
                 </p>
 
                 <p className="text-gray-300 text-base md:text-md w-[80%] leading-relaxed mb-10 max-md:text-center max-md:w-full">
-                    Experience the perfect balance of rich chocolate flavor and molten
-                    decadence. Crafted with precision to deliver a signature dessert
-                    designed to delight every chocolate lover.
+                    Experience the perfect balance of sour and salty flavors with our premium
+                    Lavashak. Crafted with real fruit to deliver a signature treat
+                    designed to delight every fruit lover.
                 </p>
 
                 <button
@@ -58,7 +58,7 @@ export default function Hero() {
                 <div className="relative w-[90%] max-w-[550px] ml-auto">
                     <Image
                         src="/HeroImage.jpg"
-                        alt="Molten chocolate dessert"
+                        alt="Premium Lavashak Fruit Leather"
                         width={600}
                         height={600}
                         className="rounded-xl w-190 h-110 object-contain drop-shadow-[0_0_25px_rgba(255,128,0,0.4)]"

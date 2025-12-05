@@ -2,34 +2,34 @@ import { CakeSlice, Leaf, Droplets, Milk, MountainIcon } from "lucide-react"
 
 const ingredients = [
     {
-        icon: CakeSlice,
-        title: "Belgian Chocolate",
-        description:
-            "Premium single-origin Belgian chocolate sourced from award-winning cacao plantations, delivering rich, complex flavors with a silky smooth texture."
-    },
-    {
         icon: Leaf,
-        title: "Madagascar Vanilla",
+        title: "Real Fruit Puree",
         description:
-            "Hand-harvested vanilla beans from Madagascar's lush plantations, known for their aromatic intensity and natural sweetness that elevates every creation."
+            "Made from 100% real fruit puree, capturing the authentic essence and natural vitamins of fresh fruits in every bite."
     },
     {
         icon: Droplets,
-        title: "Organic Sugar",
+        title: "Imli (Tamarind)",
         description:
-            "Pure organic cane sugar from sustainable farms, providing the perfect sweetness while maintaining our commitment to environmental responsibility."
+            "Tangy and tart tamarind pulp that adds a signature sour kick, perfectly balancing the natural sweetness of the fruit base."
+    },
+    {
+        icon: CakeSlice,
+        title: "Aloo Bukhara Anaar Sauce",
+        description:
+            "A rich, savory sauce made from plums and pomegranates, drizzled to create a mouth-watering fusion of sweet, sour, and fruity flavors."
     },
     {
         icon: Milk,
-        title: "Farm Fresh Cream",
+        title: "Lemon Juice",
         description:
-            "Locally sourced, farm-fresh cream from grass-fed dairy farms, ensuring rich, velvety textures and authentic dairy excellence in every bite."
+            "Freshly squeezed lemon juice provides a zesty brightness that enhances the fruit flavors and adds a refreshing finish."
     },
     {
         icon: MountainIcon,
-        title: "Himalayan Salt",
+        title: "Sea Salt",
         description:
-            "Natural Himalayan salt crystals that enhance flavor profiles and add a sophisticated mineral complexity to our premium dessert formulations."
+            "Premium sea salt crystals that elevate the sour and sweet notes, creating the addictive savory profile Lavashak is famous for."
     }
 ]
 
@@ -53,8 +53,8 @@ export default function Ingredients() {
                     </h2>
 
                     <p className="text-gray-300 max-w-xl leading-relaxed mb-12">
-                        Every Lava Shak dessert is crafted with the finest, ethically sourced
-                        ingredients. Exceptional quality begins with exceptional ingredients.
+                        Every Lava Shak roll is crafted with the finest, sun-ripened fruits and authentic spices.
+                        Exceptional quality begins with exceptional ingredients.
                     </p>
 
                     {/* Ingredient List */}
